@@ -44,15 +44,17 @@ function disable(val){
 function fileFilter(){
 	var result = [];
 	for(var x=1;x<lines.length;x++){
-		var obj = {};
+		var obj = {"label":"","value":""};
 		var cline = lines[x].split(",");
-		//for(var y=0;y<labels.length;y++){
-		//	if(labels[y] == label_val1){// || labels[y] == label_val2){
+		for(var y=0;y<labels.length;y++){
+			if(labels[y] == label_val1){// || labels[y] == label_val2){
 				//obj[labels[y]] = cline[y];
-					obj.label = label_val1;
-					obj.value = label_val2;
-		//	}	
-		//}
+					obj.label = cline[y];
+			}
+			else if (labels[y] == label_val2){
+					obj.value = cline[y];
+			}	
+		}
 		result.push(JSON.stringify(obj,null,3));
 	}
 
